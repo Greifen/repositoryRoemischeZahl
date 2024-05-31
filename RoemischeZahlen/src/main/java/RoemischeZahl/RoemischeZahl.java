@@ -27,10 +27,10 @@ public class RoemischeZahl {
 		char zeichen2;
 		int stelleInArrays1;
 		int stelleInArrays2=0;
-		for (int stelleRömischeZahl = 0; stelleRömischeZahl < roemischeZahl.length()-1; stelleRömischeZahl++)
+		for (int stelleRoemischeZahl = 0; stelleRoemischeZahl < roemischeZahl.length()-1; stelleRoemischeZahl++)
 		{
-			zeichen1 = roemischeZahl.charAt(stelleRömischeZahl);
-			zeichen2 = roemischeZahl.charAt(stelleRömischeZahl+1);
+			zeichen1 = roemischeZahl.charAt(stelleRoemischeZahl);
+			zeichen2 = roemischeZahl.charAt(stelleRoemischeZahl+1);
 
 			stelleInArrays1=0;
 			while(roemischeZahlen[stelleInArrays1]!=zeichen1) {
