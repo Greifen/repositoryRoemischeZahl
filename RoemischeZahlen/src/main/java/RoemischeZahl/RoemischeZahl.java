@@ -32,14 +32,8 @@ public class RoemischeZahl {
 			zeichen1 = roemischeZahl.charAt(stelleRoemischeZahl);
 			zeichen2 = roemischeZahl.charAt(stelleRoemischeZahl+1);
 
-			stelleInArrays1=0;
-			while(roemischeZahlen[stelleInArrays1]!=zeichen1) {
-				stelleInArrays1++;
-			}
-			stelleInArrays2=0;
-			while(roemischeZahlen[stelleInArrays2]!=zeichen2) {
-				stelleInArrays2++;
-			}
+			stelleInArrays1 = stelleInArrays(zeichen1);
+			stelleInArrays2 = stelleInArrays(zeichen2);
 			if(stelleInArrays1<stelleInArrays2) {
 				dezimalzahl-=roemischeZahlenWerte[stelleInArrays1];
 			}
@@ -54,6 +48,20 @@ public class RoemischeZahl {
 		dezimalzahl+=roemischeZahlenWerte[stelleInArrays2];
 		System.out.println(dezimalzahl);
 		return dezimalzahl;
+	}
+
+	/**
+	 * gibt die Stelle in den Arrays roemischeZahlen bzw. roemischeZahlenWerte zurück.
+	 * @param zeichen
+	 * @return stelleInArray
+	 */
+	private int stelleInArrays(char zeichen) {
+		int stelleInArrays;
+		stelleInArrays=0;
+		while(roemischeZahlen[stelleInArrays]!=zeichen) {
+			stelleInArrays++;
+		}
+		return stelleInArrays;
 	}
 
 }
