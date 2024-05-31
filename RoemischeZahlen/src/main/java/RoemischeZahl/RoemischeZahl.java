@@ -25,27 +25,28 @@ public class RoemischeZahl {
 		int dezimalzahl=0;
 		char zeichen1;
 		char zeichen2;
-		int stelleInArrays1;
-		int stelleInArrays2=0;
+		int stelleInArraysZeichen1;
+		int stelleInArraysZeichen2=0;
 		for (int stelleRoemischeZahl = 0; stelleRoemischeZahl < roemischeZahl.length()-1; stelleRoemischeZahl++)
 		{
 			zeichen1 = roemischeZahl.charAt(stelleRoemischeZahl);
 			zeichen2 = roemischeZahl.charAt(stelleRoemischeZahl+1);
 
-			stelleInArrays1 = stelleInArrays(zeichen1);
-			stelleInArrays2 = stelleInArrays(zeichen2);
-			if(stelleInArrays1<stelleInArrays2) {
-				dezimalzahl-=roemischeZahlenWerte[stelleInArrays1];
+			stelleInArraysZeichen1 = stelleInArrays(zeichen1);
+			stelleInArraysZeichen2 = stelleInArrays(zeichen2);
+			
+			if(stelleInArraysZeichen1<stelleInArraysZeichen2) {
+				dezimalzahl-=roemischeZahlenWerte[stelleInArraysZeichen1];
 			}
 			else
 			{
-				dezimalzahl+=roemischeZahlenWerte[stelleInArrays1];
+				dezimalzahl+=roemischeZahlenWerte[stelleInArraysZeichen1];
 			}
 
 			System.out.println(dezimalzahl);
 		}
 		
-		dezimalzahl+=roemischeZahlenWerte[stelleInArrays2];
+		dezimalzahl+=roemischeZahlenWerte[stelleInArraysZeichen2];
 		System.out.println(dezimalzahl);
 		return dezimalzahl;
 	}
