@@ -9,15 +9,15 @@ public class RoemischeZahl {
 		RoemischeZahl roemischeZahl = new RoemischeZahl();
 		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI"));
 		System.out.println(roemischeZahl.roemischeZahlenAddieren2("CMXC", "CMLXXVI"));
-		
+
 		System.out.println(roemischeZahl.roemischeZahlInDezimal("X"));
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(250 + 2984));
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(2984)); // MMCMLXXXIV
-		
-		int array[] = new int[3];  // create an array of 3 integers.
-        array[0] = 1;
-        array[1] = 2;
-        array[2] = 3;
+
+		int array[] = new int[3]; // create an array of 3 integers.
+		array[0] = 1;
+		array[1] = 2;
+		array[2] = 3;
 
 	}
 
@@ -130,24 +130,23 @@ public class RoemischeZahl {
 	public String roemischeZahlenAddieren(String roemischeZahl1, String roemischeZahl2) {
 		return dezimalzahlInRoemische(roemischeZahlInDezimal(roemischeZahl1) + roemischeZahlInDezimal(roemischeZahl2));
 	}
-	
-	
+
 	/**
 	 * addiert zwei roemische Zahlen und gibt diese als roemische Zahl aus, wenn
-	 * dessen Ergebnis unter 4000 ist. (rechnet direkt mit den roemischen Zahlen)
+	 * dessen Ergebnis unter 4000 ist. (rechnet direkt mit den roemischen Zahlen.
+	 * Nutzt dazu summeRoemischeStellenwerttafel, in welchr die Anzahl der
+	 * roemischen Zeichen notiert wird und bündelt bzw. entbündelt danach.)
 	 * 
 	 * @param roemischeZahl1
 	 * @param roemischeZahl2
 	 * @return Summe der beiden roemischen Zahlen.
 	 */
 	public String roemischeZahlenAddieren2(String roemischeZahl1, String roemischeZahl2) {
-		int[] summeRoemischeStellenwerttafel = new int[7]; //{ 0, 0, 0, 0, 0, 0, 0 };
-		
+		int[] summeRoemischeStellenwerttafel = new int[7]; // { 0, 0, 0, 0, 0, 0, 0 };
+
 		roemischeStellenwerttafel(roemischeZahl1, summeRoemischeStellenwerttafel);
 		roemischeStellenwerttafel(roemischeZahl2, summeRoemischeStellenwerttafel);
-		
-		
-		
+
 		return "";
 	}
 
@@ -167,15 +166,15 @@ public class RoemischeZahl {
 
 			if (stelleInArraysZeichen1 < stelleInArraysZeichen2) {
 				summeRoemischeStellenwerttafel[stelleInArraysZeichen1]--;
-				//dezimalzahl -= roemischeZahlenWerte[stelleInArraysZeichen1];
+				// dezimalzahl -= roemischeZahlenWerte[stelleInArraysZeichen1];
 			} else {
 				summeRoemischeStellenwerttafel[stelleInArraysZeichen1]++;
-				//dezimalzahl += roemischeZahlenWerte[stelleInArraysZeichen1];
+				// dezimalzahl += roemischeZahlenWerte[stelleInArraysZeichen1];
 			}
 //			TODO:logging
 //			System.out.println(dezimalzahl);
 		}
 		summeRoemischeStellenwerttafel[stelleInArraysZeichen2]++;
-		//dezimalzahl += roemischeZahlenWerte[stelleInArraysZeichen2];
+		// dezimalzahl += roemischeZahlenWerte[stelleInArraysZeichen2];
 	}
 }
