@@ -16,6 +16,7 @@ public class RoemischeZahl {
 		System.out.println(dezimalzahl2);
 		System.out.println(dezimalzahl1 + dezimalzahl2);
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(dezimalzahl1 + dezimalzahl2));
+		System.out.println(roemischeZahl.dezimalzahlInRoemische(250+2984));
 		
 		//Tests
 		//TODO: Unittests jede ziffer einmal 1,2,3,4,5,6,7,8,9,0 + Grenzfall + unterschiedlich viele Stellen
@@ -26,8 +27,9 @@ public class RoemischeZahl {
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(2806)); //MMDCCCVI
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(2501)); //MMDI
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(3999));	//MMMCMXCIX
-		System.out.println(roemischeZahl.dezimalzahlInRoemische(4000));
-		System.out.println(roemischeZahl.dezimalzahlInRoemische(4567));
+		System.out.println(roemischeZahl.dezimalzahlInRoemische(4000)); //Fehler: Nur Zahlen unter 4000.
+		System.out.println(roemischeZahl.dezimalzahlInRoemische(4567)); //Fehler: Nur Zahlen unter 4000.
+		System.out.println(roemischeZahl.dezimalzahlInRoemische(2984)); //Fehler: Nur Zahlen unter 4000.
 		
 //		//wie konkatiniere ich String mit char?
 //		String hallo="hallo";
