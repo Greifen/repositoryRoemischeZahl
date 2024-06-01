@@ -8,11 +8,17 @@ public class RoemischeZahl {
 	public static void main(String[] args) {
 		RoemischeZahl roemischeZahl = new RoemischeZahl();
 		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI"));
-
-		//Tests
+		System.out.println(roemischeZahl.roemischeZahlenAddieren2("CMXC", "CMLXXVI"));
+		
 		System.out.println(roemischeZahl.roemischeZahlInDezimal("X"));
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(250 + 2984));
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(2984)); // MMCMLXXXIV
+		
+		int array[] = new int[3];  // create an array of 3 integers.
+        array[0] = 1;
+        array[1] = 2;
+        array[2] = 3;
+
 	}
 
 	/**
@@ -110,15 +116,66 @@ public class RoemischeZahl {
 			return "Fehler: Nur Zahlen unter 4000.";
 		}
 	}
-	
+
 	/**
-	 * addiert zwei roemische Zahlen und gibt diese als roemische Zahl aus, wenn dessen Ergebnis unter 4000 ist.
+	 * addiert zwei roemische Zahlen und gibt diese als roemische Zahl aus, wenn
+	 * dessen Ergebnis unter 4000 ist. (wandelt dazu die beiden roemischen Zahlen in
+	 * Dezimalzahlen um und dann die Summe dieser Dezimalzahlen wiederum zurück in
+	 * eine roemische Zahl)
+	 * 
 	 * @param roemischeZahl1
 	 * @param roemischeZahl2
 	 * @return Summe der beiden roemischen Zahlen.
 	 */
-	public String roemischeZahlenAddieren(String roemischeZahl1, String roemischeZahl2)
-	{
-		return dezimalzahlInRoemische(roemischeZahlInDezimal(roemischeZahl1)+roemischeZahlInDezimal(roemischeZahl2));
+	public String roemischeZahlenAddieren(String roemischeZahl1, String roemischeZahl2) {
+		return dezimalzahlInRoemische(roemischeZahlInDezimal(roemischeZahl1) + roemischeZahlInDezimal(roemischeZahl2));
+	}
+	
+	
+	/**
+	 * addiert zwei roemische Zahlen und gibt diese als roemische Zahl aus, wenn
+	 * dessen Ergebnis unter 4000 ist. (rechnet direkt mit den roemischen Zahlen)
+	 * 
+	 * @param roemischeZahl1
+	 * @param roemischeZahl2
+	 * @return Summe der beiden roemischen Zahlen.
+	 */
+	public String roemischeZahlenAddieren2(String roemischeZahl1, String roemischeZahl2) {
+		int[] summeRoemischeStellenwerttafel = new int[7]; //{ 0, 0, 0, 0, 0, 0, 0 };
+		
+		roemischeStellenwerttafel(roemischeZahl1, summeRoemischeStellenwerttafel);
+		roemischeStellenwerttafel(roemischeZahl2, summeRoemischeStellenwerttafel);
+		
+		
+		
+		return "";
+	}
+
+	private void roemischeStellenwerttafel(String roemischeZahl, int[] summeRoemischeStellenwerttafel) {
+		char zeichen1;
+		char zeichen2;
+		int stelleInArraysZeichen1;
+		// bei einem Zeichen geht er nicht in die Schleife und gibt direkt danach den
+		// roemischenZahlenWert an der stelleINArraysZeichen2 aus.
+		int stelleInArraysZeichen2 = stelleInArrays(roemischeZahl.charAt(0));
+		for (int stelleRoemischeZahl = 0; stelleRoemischeZahl < roemischeZahl.length() - 1; stelleRoemischeZahl++) {
+			zeichen1 = roemischeZahl.charAt(stelleRoemischeZahl);
+			zeichen2 = roemischeZahl.charAt(stelleRoemischeZahl + 1);
+
+			stelleInArraysZeichen1 = stelleInArrays(zeichen1);
+			stelleInArraysZeichen2 = stelleInArrays(zeichen2);
+
+			if (stelleInArraysZeichen1 < stelleInArraysZeichen2) {
+				summeRoemischeStellenwerttafel[stelleInArraysZeichen1]--;
+				//dezimalzahl -= roemischeZahlenWerte[stelleInArraysZeichen1];
+			} else {
+				summeRoemischeStellenwerttafel[stelleInArraysZeichen1]++;
+				//dezimalzahl += roemischeZahlenWerte[stelleInArraysZeichen1];
+			}
+//			TODO:logging
+//			System.out.println(dezimalzahl);
+		}
+		summeRoemischeStellenwerttafel[stelleInArraysZeichen2]++;
+		//dezimalzahl += roemischeZahlenWerte[stelleInArraysZeichen2];
 	}
 }
