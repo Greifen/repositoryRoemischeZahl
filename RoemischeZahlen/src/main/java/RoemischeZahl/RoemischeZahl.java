@@ -6,11 +6,10 @@ public class RoemischeZahl {
 	private int[] roemischeZahlenWerte = { 1, 5, 10, 50, 100, 500, 1000 };
 
 	public static void main(String[] args) {
-//		String roemischeZahl1 = "";
+//		String roemischeZahl1 = "CMXC";
 //		String roemischeZahl2 = "CMLXXVI";
 		RoemischeZahl roemischeZahl = new RoemischeZahl();
 		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI"));
-
 
 
 		System.out.println(roemischeZahl.roemischeZahlInDezimal("X"));
