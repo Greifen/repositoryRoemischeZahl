@@ -16,7 +16,8 @@ public class RoemischeZahl {
 		System.out.println(dezimalzahl2);
 		System.out.println(dezimalzahl1 + dezimalzahl2);
 		System.out.println(roemischeZahle.dezimalzahlInRoemische(dezimalzahl1 + dezimalzahl2));
-		
+		System.out.println(roemischeZahle.dezimalzahlInRoemische(3999));	
+		System.out.println(roemischeZahle.dezimalzahlInRoemische(4000));
 //		//wie konkatiniere ich String mit char?
 //		String hallo="hallo";
 //		char h='h';
@@ -88,35 +89,30 @@ public class RoemischeZahl {
 		for (int stelleInArrays = roemischeZahlenWerte.length-1; stelleInArrays>=0 ; stelleInArrays-=2) {
 			anzahlZehnerpotzen=dezimalzahl/roemischeZahlenWerte[stelleInArrays];
 			dezimalzahl-=anzahlZehnerpotzen*roemischeZahlenWerte[stelleInArrays];
-			if(stelleInArrays!=6) {
-				if(anzahlZehnerpotzen!=0) {
-					if (anzahlZehnerpotzen<4) {
-						for (int i = 0; i < anzahlZehnerpotzen; i++) {
-							roemischeZahl += roemischeZahlen[stelleInArrays];
-						}
-					}
-					else if(anzahlZehnerpotzen==4) {
+			if(anzahlZehnerpotzen!=0) {
+				if (anzahlZehnerpotzen<4) {
+					for (int i = 0; i < anzahlZehnerpotzen; i++) {
 						roemischeZahl += roemischeZahlen[stelleInArrays];
-						roemischeZahl += roemischeZahlen[stelleInArrays+1];
-					}
-					else if(anzahlZehnerpotzen==5) {
-						roemischeZahl += roemischeZahlen[stelleInArrays+1];
-					}
-					else if(anzahlZehnerpotzen<9)
-					{
-						roemischeZahl += roemischeZahlen[stelleInArrays+1];
-						for (int i = 0; i < anzahlZehnerpotzen-5; i++) {
-							roemischeZahl += roemischeZahlen[stelleInArrays];
-						}
-					}
-					else { //if(x==9)
-						roemischeZahl += roemischeZahlen[stelleInArrays];
-						roemischeZahl += roemischeZahlen[stelleInArrays+2];
 					}
 				}
-			}
-			else {
-				System.err.println("Dezimalzahl muss unter 3899 sein.");
+				else if(anzahlZehnerpotzen==4) {
+					roemischeZahl += roemischeZahlen[stelleInArrays];
+					roemischeZahl += roemischeZahlen[stelleInArrays+1];
+				}
+				else if(anzahlZehnerpotzen==5) {
+					roemischeZahl += roemischeZahlen[stelleInArrays+1];
+				}
+				else if(anzahlZehnerpotzen<9)
+				{
+					roemischeZahl += roemischeZahlen[stelleInArrays+1];
+					for (int i = 0; i < anzahlZehnerpotzen-5; i++) {
+						roemischeZahl += roemischeZahlen[stelleInArrays];
+					}
+				}
+				else{ //if(x==9)
+					roemischeZahl += roemischeZahlen[stelleInArrays];
+					roemischeZahl += roemischeZahlen[stelleInArrays+2];
+				}
 			}
 		}
 		return roemischeZahl;
