@@ -46,6 +46,6 @@ public class RoemischeZahlTest {
 		assertThat(roemischeZahl.dezimalzahlInRoemische(3999)).isEqualTo("MMMCMXCIX");
 		assertThat(roemischeZahl.dezimalzahlInRoemische(4000)).isEqualTo("Fehler: Nur Zahlen unter 4000.");
 		assertThat(roemischeZahl.dezimalzahlInRoemische(4567)).isEqualTo("Fehler: Nur Zahlen unter 4000.");
-		assertThat(roemischeZahl.dezimalzahlInRoemische(2984)).isEqualTo("MMMCMLXXXIV");
+		assertThat(roemischeZahl.dezimalzahlInRoemische(2984)).isEqualTo("MMCMLXXXIV");
 	}
 }
