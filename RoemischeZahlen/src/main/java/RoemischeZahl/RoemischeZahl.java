@@ -6,16 +6,12 @@ public class RoemischeZahl {
 	private int[] roemischeZahlenWerte = { 1, 5, 10, 50, 100, 500, 1000 };
 
 	public static void main(String[] args) {
-		String roemischeZahl1 = "CMXC";
-		String roemischeZahl2 = "CMLXXVI";
+//		String roemischeZahl1 = "";
+//		String roemischeZahl2 = "CMLXXVI";
 		RoemischeZahl roemischeZahl = new RoemischeZahl();
-		int dezimalzahl1 = roemischeZahl.roemischeZahlInDezimal(roemischeZahl1);
-		int dezimalzahl2 = roemischeZahl.roemischeZahlInDezimal(roemischeZahl2);
+		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI"));
 
-		System.out.println(dezimalzahl1);
-		System.out.println(dezimalzahl2);
-		System.out.println(dezimalzahl1 + dezimalzahl2);
-		System.out.println(roemischeZahl.dezimalzahlInRoemische(dezimalzahl1 + dezimalzahl2));
+
 
 		System.out.println(roemischeZahl.roemischeZahlInDezimal("X"));
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(250 + 2984));
@@ -138,5 +134,16 @@ public class RoemischeZahl {
 //			System.err.println("Fehler: Nur Zahlen unter 4000.");
 			return "Fehler: Nur Zahlen unter 4000.";
 		}
+	}
+	
+	public String roemischeZahlenAddieren(String roemischeZahl1, String roemischeZahl2)
+	{
+		return dezimalzahlInRoemische(roemischeZahlInDezimal(roemischeZahl1)+roemischeZahlInDezimal(roemischeZahl2));
+//		int dezimalzahl1 = roemischeZahl.roemischeZahlInDezimal(roemischeZahl1);
+//		int dezimalzahl2 = roemischeZahl.roemischeZahlInDezimal(roemischeZahl2);
+//		System.out.println(dezimalzahl1);
+//		System.out.println(dezimalzahl2);
+//		System.out.println(dezimalzahl1 + dezimalzahl2);
+//		System.out.println(roemischeZahl.dezimalzahlInRoemische(dezimalzahl1 + dezimalzahl2));
 	}
 }
