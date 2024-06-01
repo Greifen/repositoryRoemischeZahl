@@ -92,7 +92,7 @@ public class RoemischeZahl {
 	 * zurück.
 	 * 
 	 * @param dezimalzahl Dezimalzahl unter 4000
-	 * @return roemische Zahl
+	 * @return roemische Zahl oder Fehler: Nur Zahlen unter 4000.
 	 */
 	public String dezimalzahlInRoemische(int dezimalzahl) {
 		if (dezimalzahl<4000) {
