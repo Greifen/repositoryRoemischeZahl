@@ -88,8 +88,10 @@ public class RoemischeZahl {
 		int anzahlZehnerpotzen;
 		for (int stelleInArrays = roemischeZahlenWerte.length-1; stelleInArrays>=0 ; stelleInArrays-=2) {
 			anzahlZehnerpotzen=dezimalzahl/roemischeZahlenWerte[stelleInArrays];
+			
 			//dezimalzahl: hier werden die höheren Stellen pro Durchlauf abgehängt
 			dezimalzahl-=anzahlZehnerpotzen*roemischeZahlenWerte[stelleInArrays];
+			
 			if(anzahlZehnerpotzen!=0) {
 				if (anzahlZehnerpotzen<4) {
 					for (int i = 0; i < anzahlZehnerpotzen; i++) {
