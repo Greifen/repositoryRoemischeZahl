@@ -6,37 +6,13 @@ public class RoemischeZahl {
 	private int[] roemischeZahlenWerte = { 1, 5, 10, 50, 100, 500, 1000 };
 
 	public static void main(String[] args) {
-//		String roemischeZahl1 = "CMXC";
-//		String roemischeZahl2 = "CMLXXVI";
 		RoemischeZahl roemischeZahl = new RoemischeZahl();
 		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI"));
 
-
+		//Tests
 		System.out.println(roemischeZahl.roemischeZahlInDezimal("X"));
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(250 + 2984));
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(2984)); // MMCMLXXXIV
-
-		// Tests
-		// JUnit Tests jede ziffer einmal 1,2,3,4,5,6,7,8,9,0 + Grenzfall +
-		// unterschiedlich viele Stellen
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(3)); //III
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(27)); //XXVII
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(870)); //DCCCLXX
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(2427)); //MMCDXXVII
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(2806)); //MMDCCCVI
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(2501)); //MMDI
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(3999));	//MMMCMXCIX
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(4000)); //Fehler: Nur Zahlen unter 4000.
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(4567)); //Fehler: Nur Zahlen unter 4000.
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(2984)); //MMCMLXXXIV
-
-//		//wie konkatiniere ich String mit char?
-//		String hallo="hallo";
-//		char h='h';
-//		char[] roemischeZahlen2 = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
-//		hallo += roemischeZahlen2[0];
-//		hallo += roemischeZahlen2[1];
-//		System.out.println(hallo);
 	}
 
 	/**
@@ -135,14 +111,14 @@ public class RoemischeZahl {
 		}
 	}
 	
+	/**
+	 * addiert zwei roemische Zahlen und gibt diese als roemische Zahl aus, wenn dessen Ergebnis unter 4000 ist.
+	 * @param roemischeZahl1
+	 * @param roemischeZahl2
+	 * @return Summe der beiden roemischen Zahlen.
+	 */
 	public String roemischeZahlenAddieren(String roemischeZahl1, String roemischeZahl2)
 	{
 		return dezimalzahlInRoemische(roemischeZahlInDezimal(roemischeZahl1)+roemischeZahlInDezimal(roemischeZahl2));
-//		int dezimalzahl1 = roemischeZahl.roemischeZahlInDezimal(roemischeZahl1);
-//		int dezimalzahl2 = roemischeZahl.roemischeZahlInDezimal(roemischeZahl2);
-//		System.out.println(dezimalzahl1);
-//		System.out.println(dezimalzahl2);
-//		System.out.println(dezimalzahl1 + dezimalzahl2);
-//		System.out.println(roemischeZahl.dezimalzahlInRoemische(dezimalzahl1 + dezimalzahl2));
 	}
 }
