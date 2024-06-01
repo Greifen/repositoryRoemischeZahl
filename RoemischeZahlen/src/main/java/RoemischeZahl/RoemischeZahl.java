@@ -18,6 +18,7 @@ public class RoemischeZahl {
 		System.out.println(roemischeZahle.dezimalzahlInRoemische(dezimalzahl1 + dezimalzahl2));
 		System.out.println(roemischeZahle.dezimalzahlInRoemische(3999));	
 		System.out.println(roemischeZahle.dezimalzahlInRoemische(4000));
+		
 //		//wie konkatiniere ich String mit char?
 //		String hallo="hallo";
 //		char h='h';
@@ -80,44 +81,51 @@ public class RoemischeZahl {
 	 * gibt die Stelle in den Arrays roemischeZahlen bzw. roemischeZahlenWerte
 	 * zurück.
 	 * 
-	 * @param dezimalzahl
+	 * @param dezimalzahl Dezimalzahl unter 4000
 	 * @return roemische Zahl
 	 */
 	public String dezimalzahlInRoemische(int dezimalzahl) {
-		String roemischeZahl="";
-		int anzahlZehnerpotzen;
-		for (int stelleInArrays = roemischeZahlenWerte.length-1; stelleInArrays>=0 ; stelleInArrays-=2) {
-			anzahlZehnerpotzen=dezimalzahl/roemischeZahlenWerte[stelleInArrays];
-			
-			//dezimalzahl: hier werden die höheren Stellen pro Durchlauf abgehängt
-			dezimalzahl-=anzahlZehnerpotzen*roemischeZahlenWerte[stelleInArrays];
-			
-			if(anzahlZehnerpotzen!=0) {
-				if (anzahlZehnerpotzen<4) {
-					for (int i = 0; i < anzahlZehnerpotzen; i++) {
-						roemischeZahl += roemischeZahlen[stelleInArrays];
+		if (dezimalzahl<4000) {
+			String roemischeZahl="";
+			int anzahlZehnerpotzen;
+			for (int stelleInArrays = roemischeZahlenWerte.length-1; stelleInArrays>=0 ; stelleInArrays-=2) {
+				anzahlZehnerpotzen=dezimalzahl/roemischeZahlenWerte[stelleInArrays];
+				
+				//dezimalzahl: hier werden die höheren Stellen pro Durchlauf abgehängt
+				dezimalzahl-=anzahlZehnerpotzen*roemischeZahlenWerte[stelleInArrays];
+				
+				if(anzahlZehnerpotzen!=0) {
+					if (anzahlZehnerpotzen<4) {
+						for (int i = 0; i < anzahlZehnerpotzen; i++) {
+							roemischeZahl += roemischeZahlen[stelleInArrays];
+						}
 					}
-				}
-				else if(anzahlZehnerpotzen==4) {
-					roemischeZahl += roemischeZahlen[stelleInArrays];
-					roemischeZahl += roemischeZahlen[stelleInArrays+1];
-				}
-				else if(anzahlZehnerpotzen==5) {
-					roemischeZahl += roemischeZahlen[stelleInArrays+1];
-				}
-				else if(anzahlZehnerpotzen<9)
-				{
-					roemischeZahl += roemischeZahlen[stelleInArrays+1];
-					for (int i = 0; i < anzahlZehnerpotzen-5; i++) {
+					else if(anzahlZehnerpotzen==4) {
 						roemischeZahl += roemischeZahlen[stelleInArrays];
+						roemischeZahl += roemischeZahlen[stelleInArrays+1];
 					}
-				}
-				else{ //if(anzahlZehnerpotzen==9)
-					roemischeZahl += roemischeZahlen[stelleInArrays];
-					roemischeZahl += roemischeZahlen[stelleInArrays+2];
+					else if(anzahlZehnerpotzen==5) {
+						roemischeZahl += roemischeZahlen[stelleInArrays+1];
+					}
+					else if(anzahlZehnerpotzen<9)
+					{
+						roemischeZahl += roemischeZahlen[stelleInArrays+1];
+						for (int i = 0; i < anzahlZehnerpotzen-5; i++) {
+							roemischeZahl += roemischeZahlen[stelleInArrays];
+						}
+					}
+					else{ //if(anzahlZehnerpotzen==9)
+						roemischeZahl += roemischeZahlen[stelleInArrays];
+						roemischeZahl += roemischeZahlen[stelleInArrays+2];
+					}
 				}
 			}
+			return roemischeZahl;
 		}
-		return roemischeZahl;
+		else
+		{
+//			System.err.println("Fehler: Nur Zahlen unter 4000.");
+			return "Fehler: Nur Zahlen unter 4000.";
+		}
 	}
 }
