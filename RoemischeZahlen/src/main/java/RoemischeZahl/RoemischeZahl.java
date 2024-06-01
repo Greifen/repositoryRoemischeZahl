@@ -19,7 +19,7 @@ public class RoemischeZahl {
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(250+2984));
 		
 		//Tests
-		//TODO: Unittests jede ziffer einmal 1,2,3,4,5,6,7,8,9,0 + Grenzfall + unterschiedlich viele Stellen
+		//TODO: JUnit Tests jede ziffer einmal 1,2,3,4,5,6,7,8,9,0 + Grenzfall + unterschiedlich viele Stellen
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(3)); //III
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(27)); //XXVII
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(870)); //DCCCLXX
