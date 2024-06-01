@@ -22,7 +22,7 @@ public class RoemischeZahl {
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(2984)); // MMCMLXXXIV
 
 		// Tests
-		//  JUnit Tests jede ziffer einmal 1,2,3,4,5,6,7,8,9,0 + Grenzfall +
+		// JUnit Tests jede ziffer einmal 1,2,3,4,5,6,7,8,9,0 + Grenzfall +
 		// unterschiedlich viele Stellen
 //		System.out.println(roemischeZahl.dezimalzahlInRoemische(3)); //III
 //		System.out.println(roemischeZahl.dezimalzahlInRoemische(27)); //XXVII
@@ -57,6 +57,8 @@ public class RoemischeZahl {
 		char zeichen1;
 		char zeichen2;
 		int stelleInArraysZeichen1;
+		// bei einem Zeichen geht er nicht in die Schleife und gibt direkt danach den
+		// roemischenZahlenWert an der stelleINArraysZeichen2 aus.
 		int stelleInArraysZeichen2 = stelleInArrays(roemischeZahl.charAt(0));
 		for (int stelleRoemischeZahl = 0; stelleRoemischeZahl < roemischeZahl.length() - 1; stelleRoemischeZahl++) {
 			zeichen1 = roemischeZahl.charAt(stelleRoemischeZahl);
