@@ -1,12 +1,11 @@
-
 package RoemischeZahl;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RoemischeZahlTest {
+public class RoemischeZahl3Test {
 
-	private final RoemischeZahl roemischeZahl = new RoemischeZahl();
+	private final RoemischeZahl3 roemischeZahl = new RoemischeZahl3();
 
 	@Test
 	public void testRoemischeZahlInDezimal() {
@@ -71,30 +70,5 @@ public class RoemischeZahlTest {
 		
 		assertThat(roemischeZahl.roemischeZahlenAddieren("CDL", "DCLXX")).isEqualTo("MCXX");
 		assertThat(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI")).isEqualTo("MCMLXVI");
-	}
-	
-	
-	@Test
-	public void testRoemischeZahlenAddieren2() {
-		//anhängen
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("XI", "XI")).isEqualTo("XXII");
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("XI", "IX")).isEqualTo("XX");
-		
-		//abhängen
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("III", "IV")).isEqualTo("VII");
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("CM", "MCIX")).isEqualTo("MMIX");
-		
-		
-		//bündeln
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("VIII", "VIII")).isEqualTo("XVI");
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("XX", "XX")).isEqualTo("XL");
-		
-		//entbündeln
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("IV", "IX")).isEqualTo("XIII");
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("IX", "IX")).isEqualTo("XVIII");
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("XCIX", "XCIX")).isEqualTo("CXCVIII");
-		
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("CDL", "DCLXX")).isEqualTo("MCXX");
-		assertThat(roemischeZahl.roemischeZahlenAddieren2("CMXC", "CMLXXVI")).isEqualTo("MCMLXVI");
 	}
 }

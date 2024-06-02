@@ -8,7 +8,7 @@ public class RoemischeZahl {
 	public static void main(String[] args) {
 		RoemischeZahl roemischeZahl = new RoemischeZahl();
 		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI")); // MCMLXVI
-		System.out.println(roemischeZahl.roemischeZahlenAddieren2("XI", "XI")); //"XXII"
+		System.out.println(roemischeZahl.roemischeZahlenAddieren2("XX", "XX")); //"XL"
 
 		System.out.println(roemischeZahl.roemischeZahlInDezimal("X"));
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(250 + 2984));
@@ -229,4 +229,6 @@ public class RoemischeZahl {
 		summeRoemischeStellenwerttafel[stelleInArraysZeichen2]++;
 		// dezimalzahl += roemischeZahlenWerte[stelleInArraysZeichen2];
 	}
+
+
 }
