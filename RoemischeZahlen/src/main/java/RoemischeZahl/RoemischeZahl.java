@@ -8,7 +8,7 @@ public class RoemischeZahl {
 	public static void main(String[] args) {
 		RoemischeZahl roemischeZahl = new RoemischeZahl();
 		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI")); //MCMLXVI
-		System.out.println(roemischeZahl.roemischeZahlenAddieren2("CMXC", "CMLXXVI"));
+//		System.out.println(roemischeZahl.roemischeZahlenAddieren2("CMXC", "CMLXXVI"));
 
 		System.out.println(roemischeZahl.roemischeZahlInDezimal("X"));
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(250 + 2984));
@@ -19,6 +19,7 @@ public class RoemischeZahl {
 		array[1] = 2;
 		array[2] = 3;
 
+		System.out.println(3 % 2 ==1);
 	}
 
 	/**
@@ -147,7 +148,59 @@ public class RoemischeZahl {
 		roemischeStellenwerttafel(roemischeZahl1, summeRoemischeStellenwerttafel);
 		roemischeStellenwerttafel(roemischeZahl2, summeRoemischeStellenwerttafel);
 
-		return "";
+		//entbündeln
+		for (int i = 0; i < summeRoemischeStellenwerttafel.length; i+=2) {
+			if (summeRoemischeStellenwerttafel[i]>0) {
+				summeRoemischeStellenwerttafel[i+1]--;
+				summeRoemischeStellenwerttafel[i]+=5;
+			}
+			else
+			{
+				summeRoemischeStellenwerttafel[i+2]--;
+				summeRoemischeStellenwerttafel[i]+=10;
+			}
+		}
+		
+		//bündeln
+		for (int i = 0; i < summeRoemischeStellenwerttafel.length; i+=2) {
+			if(i % 2==0 && summeRoemischeStellenwerttafel[i]>3) {
+				summeRoemischeStellenwerttafel[i]-=5;
+				summeRoemischeStellenwerttafel[i+1]++;
+			}
+			else if(i % 2==1 && summeRoemischeStellenwerttafel[i]>1) {
+				summeRoemischeStellenwerttafel[i]-=2;
+				summeRoemischeStellenwerttafel[i+1]++;
+			}
+		}
+		
+		//Stellenwerttafel zu String
+		String summeRoemischeZahl="";
+		for (int i = summeRoemischeStellenwerttafel.length-1; i <= 0; i--) {
+			if (i%2==0 && i>0) {
+				if (summeRoemischeStellenwerttafel[i-1]==-1) {
+					summeRoemischeZahl+=roemischeZahlenWerte[i-1];
+					summeRoemischeZahl+=roemischeZahlenWerte[i];
+				}
+				else if (summeRoemischeStellenwerttafel[i-2]==-1) {
+					summeRoemischeZahl+=roemischeZahlenWerte[i-2];
+					summeRoemischeZahl+=roemischeZahlenWerte[i];				
+				}
+				else
+				{
+					for (int j=0; j < summeRoemischeStellenwerttafel[i]; j++) {
+						summeRoemischeZahl+=roemischeZahlenWerte[i];
+					}
+				}
+			}
+			else {
+				for (int j=0; j < summeRoemischeStellenwerttafel[i]; j++) {
+					summeRoemischeZahl+=roemischeZahlenWerte[i];
+				}
+			}
+		}
+		
+		
+		return summeRoemischeZahl;
 	}
 
 	private void roemischeStellenwerttafel(String roemischeZahl, int[] summeRoemischeStellenwerttafel) {
