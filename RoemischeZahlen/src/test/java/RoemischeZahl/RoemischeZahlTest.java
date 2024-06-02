@@ -72,4 +72,29 @@ public class RoemischeZahlTest {
 		assertThat(roemischeZahl.roemischeZahlenAddieren("CDL", "DCLXX")).isEqualTo("MCXX");
 		assertThat(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI")).isEqualTo("MCMLXVI");
 	}
+	
+	
+	@Test
+	public void testRoemischeZahlenAddieren2() {
+		//anhängen
+		assertThat(roemischeZahl.roemischeZahlenAddieren("XI", "XI")).isEqualTo("XXII");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("XI", "IX")).isEqualTo("XX");
+		
+		//abhängen
+		assertThat(roemischeZahl.roemischeZahlenAddieren("III", "IV")).isEqualTo("VII");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("CM", "MCIX")).isEqualTo("MMIX");
+		
+		
+		//bündeln
+		assertThat(roemischeZahl.roemischeZahlenAddieren("VIII", "VIII")).isEqualTo("XVI");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("XX", "XX")).isEqualTo("XL");
+		
+		//entbündeln
+		assertThat(roemischeZahl.roemischeZahlenAddieren("IV", "IX")).isEqualTo("XIII");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("IX", "IX")).isEqualTo("XVIII");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("XCIX", "XCIX")).isEqualTo("CXCVIII");
+		
+		assertThat(roemischeZahl.roemischeZahlenAddieren("CDL", "DCLXX")).isEqualTo("MCXX");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI")).isEqualTo("MCMLXVI");
+	}
 }

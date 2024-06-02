@@ -7,8 +7,8 @@ public class RoemischeZahl {
 
 	public static void main(String[] args) {
 		RoemischeZahl roemischeZahl = new RoemischeZahl();
-		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI")); //MCMLXVI
-//		System.out.println(roemischeZahl.roemischeZahlenAddieren2("CMXC", "CMLXXVI"));
+		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI")); // MCMLXVI
+		System.out.println(roemischeZahl.roemischeZahlenAddieren2("XI", "XI")); //"XXII"
 
 		System.out.println(roemischeZahl.roemischeZahlInDezimal("X"));
 		System.out.println(roemischeZahl.dezimalzahlInRoemische(250 + 2984));
@@ -19,13 +19,13 @@ public class RoemischeZahl {
 		array[1] = 2;
 		array[2] = 3;
 
-		System.out.println(3 % 2 ==1);
+		System.out.println(3 % 2 == 1);
 	}
 
 	/**
-	 * wandelt eine roemische Zahl in eine Dezimalzahl um. TODO: i==j+1 ||i==j-1 bzw i=j+2 XC
-	 * Überprüfung der römischen Zahl selbst (eine kleinere vor und nur 3 kleinere
-	 * nach; allerdings 4 Zeichen speichern)
+	 * wandelt eine roemische Zahl in eine Dezimalzahl um. TODO: i==j+1 ||i==j-1 bzw
+	 * i=j+2 XC Überprüfung der römischen Zahl selbst (eine kleinere vor und nur 3
+	 * kleinere nach; allerdings 4 Zeichen speichern)
 	 * 
 	 * @param roemischeZahl
 	 * @return dezimalZahl
@@ -148,58 +148,57 @@ public class RoemischeZahl {
 		roemischeStellenwerttafel(roemischeZahl1, summeRoemischeStellenwerttafel);
 		roemischeStellenwerttafel(roemischeZahl2, summeRoemischeStellenwerttafel);
 
-		//entbündeln
-		for (int i = 0; i < summeRoemischeStellenwerttafel.length; i+=2) {
-			if (summeRoemischeStellenwerttafel[i]>0) {
-				summeRoemischeStellenwerttafel[i+1]--;
-				summeRoemischeStellenwerttafel[i]+=5;
+		// entbündeln
+		for (int i = 0; i < summeRoemischeStellenwerttafel.length - 2; i += 2) {
+			if (summeRoemischeStellenwerttafel[i] < -1 && summeRoemischeStellenwerttafel[i + 1] > 0) {
+				summeRoemischeStellenwerttafel[i + 1]--;
+				summeRoemischeStellenwerttafel[i] += 5;
+			} else if (summeRoemischeStellenwerttafel[i] < -1) { // && summeRoemischeStellenwerttafel[i + 2] > 0
+				summeRoemischeStellenwerttafel[i + 2]--;
+				summeRoemischeStellenwerttafel[i] += 10;
 			}
-			else
-			{
-				summeRoemischeStellenwerttafel[i+2]--;
-				summeRoemischeStellenwerttafel[i]+=10;
+			// TODO (kann auch die beiden nachfolgenden nachbarstellen null sein? ok wenn dann wenigstens die nachfolgende gerade mind.1)
+		}
+
+		// bündeln
+		for (int i = 0; i < summeRoemischeStellenwerttafel.length; i ++) {
+			if (i % 2 == 0 && summeRoemischeStellenwerttafel[i] > 3) {
+				summeRoemischeStellenwerttafel[i] -= 5;
+				summeRoemischeStellenwerttafel[i + 1]++;
+			} else if (i % 2 == 1 && summeRoemischeStellenwerttafel[i] > 1) {
+				summeRoemischeStellenwerttafel[i] -= 2;
+				summeRoemischeStellenwerttafel[i + 1]++;
 			}
 		}
-		
-		//bündeln
-		for (int i = 0; i < summeRoemischeStellenwerttafel.length; i+=2) {
-			if(i % 2==0 && summeRoemischeStellenwerttafel[i]>3) {
-				summeRoemischeStellenwerttafel[i]-=5;
-				summeRoemischeStellenwerttafel[i+1]++;
-			}
-			else if(i % 2==1 && summeRoemischeStellenwerttafel[i]>1) {
-				summeRoemischeStellenwerttafel[i]-=2;
-				summeRoemischeStellenwerttafel[i+1]++;
-			}
-		}
-		
-		//Stellenwerttafel zu String
-		String summeRoemischeZahl="";
-		for (int i = summeRoemischeStellenwerttafel.length-1; i <= 0; i--) {
-			if (i%2==0 && i>0) {
-				if (summeRoemischeStellenwerttafel[i-1]==-1) {
-					summeRoemischeZahl+=roemischeZahlenWerte[i-1];
-					summeRoemischeZahl+=roemischeZahlenWerte[i];
-				}
-				else if (summeRoemischeStellenwerttafel[i-2]==-1) {
-					summeRoemischeZahl+=roemischeZahlenWerte[i-2];
-					summeRoemischeZahl+=roemischeZahlenWerte[i];				
-				}
-				else
-				{
-					for (int j=0; j < summeRoemischeStellenwerttafel[i]; j++) {
-						summeRoemischeZahl+=roemischeZahlenWerte[i];
+
+		// Stellenwerttafel zu String
+		String summeRoemischeZahl = "";
+		for (int i = summeRoemischeStellenwerttafel.length - 1; i >= 0; i--) {
+			if (i % 2 == 0 && i > 0) {
+				if (summeRoemischeStellenwerttafel[i - 1] == -1) {
+					for (int j = 0; j < summeRoemischeStellenwerttafel[i] - 1; j++) {
+						summeRoemischeZahl += roemischeZahlen[i];
+					}
+					summeRoemischeZahl += roemischeZahlen[i - 1];
+					summeRoemischeZahl += roemischeZahlen[i];
+				} else if (summeRoemischeStellenwerttafel[i - 2] == -1) {
+					for (int j = 0; j < summeRoemischeStellenwerttafel[i] - 1; j++) {
+						summeRoemischeZahl += roemischeZahlen[i];
+					}
+					summeRoemischeZahl += roemischeZahlen[i - 2];
+					summeRoemischeZahl += roemischeZahlen[i];
+				} else {
+					for (int j = 0; j < summeRoemischeStellenwerttafel[i]; j++) {
+						summeRoemischeZahl += roemischeZahlen[i];
 					}
 				}
-			}
-			else {
-				for (int j=0; j < summeRoemischeStellenwerttafel[i]; j++) {
-					summeRoemischeZahl+=roemischeZahlenWerte[i];
+			} else {
+				for (int j = 0; j < summeRoemischeStellenwerttafel[i]; j++) {
+					summeRoemischeZahl += roemischeZahlen[i];
 				}
 			}
 		}
-		
-		
+
 		return summeRoemischeZahl;
 	}
 
