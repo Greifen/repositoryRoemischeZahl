@@ -7,7 +7,7 @@ public class RoemischeZahl {
 
 	public static void main(String[] args) {
 		RoemischeZahl roemischeZahl = new RoemischeZahl();
-		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI"));
+		System.out.println(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI")); //MCMLXVI
 		System.out.println(roemischeZahl.roemischeZahlenAddieren2("CMXC", "CMLXXVI"));
 
 		System.out.println(roemischeZahl.roemischeZahlInDezimal("X"));
@@ -22,7 +22,7 @@ public class RoemischeZahl {
 	}
 
 	/**
-	 * wandelt eine roemische Zahl in eine Dezimalzahl um. TODO: i==j+1 ||i==j-1
+	 * wandelt eine roemische Zahl in eine Dezimalzahl um. TODO: i==j+1 ||i==j-1 bzw i=j+2 XC
 	 * Überprüfung der römischen Zahl selbst (eine kleinere vor und nur 3 kleinere
 	 * nach; allerdings 4 Zeichen speichern)
 	 * 
@@ -134,8 +134,8 @@ public class RoemischeZahl {
 	/**
 	 * addiert zwei roemische Zahlen und gibt diese als roemische Zahl aus, wenn
 	 * dessen Ergebnis unter 4000 ist. (rechnet direkt mit den roemischen Zahlen.
-	 * Nutzt dazu summeRoemischeStellenwerttafel, in welchr die Anzahl der
-	 * roemischen Zeichen notiert wird und bündelt bzw. entbündelt danach.)
+	 * Nutzt dazu summeRoemischeStellenwerttafel, in welcher die Anzahl der
+	 * roemischen Zeichen notiert wird und entbündelt und bündelt danach.)
 	 * 
 	 * @param roemischeZahl1
 	 * @param roemischeZahl2

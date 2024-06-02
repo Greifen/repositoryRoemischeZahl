@@ -48,4 +48,20 @@ public class RoemischeZahlTest {
 		assertThat(roemischeZahl.dezimalzahlInRoemische(4567)).isEqualTo("Fehler: Nur Zahlen unter 4000.");
 		assertThat(roemischeZahl.dezimalzahlInRoemische(2984)).isEqualTo("MMCMLXXXIV");
 	}
+
+	@Test
+	public void testRoemischeZahlenAddieren() {
+		assertThat(roemischeZahl.roemischeZahlenAddieren("IV", "IX")).isEqualTo("XIII");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("IX", "IX")).isEqualTo("XVIII");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("XCIX", "XCIX")).isEqualTo("CXCVIII");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("XX", "XX")).isEqualTo("XL");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("CDL", "DCLXX")).isEqualTo("MCXX");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("CM", "MCIX")).isEqualTo("MMIX");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("III", "IV")).isEqualTo("VII");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("VIII", "VIII")).isEqualTo("XVI");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("XI", "XI")).isEqualTo("XXII");
+		assertThat(roemischeZahl.roemischeZahlenAddieren("XI", "IX")).isEqualTo("XX");
+		
+		assertThat(roemischeZahl.roemischeZahlenAddieren("CMXC", "CMLXXVI")).isEqualTo("MCMLXVI");
+	}
 }
